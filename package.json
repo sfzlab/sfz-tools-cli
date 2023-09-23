@@ -1,0 +1,56 @@
+{
+  "name": "@sfz-tools/cli",
+  "version": "0.0.1",
+  "description": "Command line tool for handling SFZ and audio files",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rimraf dist && tsc",
+    "dev": "ts-node src/index.ts",
+    "dev:cli": "rm /usr/local/bin/sfz-tools && npm run build && npm link",
+    "format": "prettier --write \"src/**/*.{ts,tsx}\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "jest --config jestconfig.json"
+  },
+  "bin": {
+    "sfz-tools": "dist/index.js"
+  },
+  "keywords": [
+    "sfz",
+    "command",
+    "line",
+    "tool",
+    "audio",
+    "file"
+  ],
+  "author": "kmturley",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "@sfz-tools/core": "^0.0.2",
+    "cli-table3": "^0.6.0",
+    "commander": "^7.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.5.1",
+    "@types/node": "^14.14.41",
+    "jest": "^28.1.0",
+    "prettier": "^2.1.2",
+    "rimraf": "^3.0.2",
+    "ts-jest": "^28.0.2",
+    "ts-node": "^9.0.0",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kmturley/sfz-tools-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kmturley/sfz-tools-cli/issues"
+  },
+  "homepage": "https://github.com/kmturley/sfz-tools-cli#readme"
+}
