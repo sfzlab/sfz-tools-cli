@@ -20,9 +20,10 @@ Verify the tool has been installed by running:
 
 ## Usage
 
-Convert a file using:
+Convert an sfz file to json/xml using:
 
-    sfz-tools convert
+    sfz-tools convert ./test/example.sfz --json
+    sfz-tools convert ./test/example.sfz --xml
 
 
 ## Updating CLI code
