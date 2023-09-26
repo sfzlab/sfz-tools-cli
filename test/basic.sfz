@@ -1,0 +1,9 @@
+<region>
+sample=piano.wav
+pitch_keycenter=60
+lokey=58
+hikey=62
+lovel=1
+hivel=20
+locc64=64
+hicc64=127

@@ -1,7 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Example 1`] = `
+exports[`Convert sfz to json 1`] = `
 "{
+  \\"declaration\\": {
+    \\"attributes\\": {
+      \\"version\\": \\"1.0\\"
+    }
+  },
   \\"elements\\": [
     {
       \\"type\\": \\"element\\",

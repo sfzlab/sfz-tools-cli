@@ -22,8 +22,8 @@ Verify the tool has been installed by running:
 
 Convert an sfz file to json/xml using:
 
-    sfz-tools convert ./test/example.sfz --json
-    sfz-tools convert ./test/example.sfz --xml
+    sfz-tools convert ./test/basic.sfz --json
+    sfz-tools convert ./test/basic.sfz --xml
 
 
 ## Updating CLI code
