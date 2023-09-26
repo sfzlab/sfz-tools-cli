@@ -1,6 +1,6 @@
 {
   "name": "@sfz-tools/cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Command line tool for handling SFZ and audio files",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
