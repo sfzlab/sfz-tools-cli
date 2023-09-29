@@ -1,0 +1,23 @@
+{
+  "declaration": {
+    "attributes": {
+      "version": "1.0"
+    }
+  },
+  "elements": [
+    {
+      "type": "element",
+      "name": "region",
+      "elements": [
+        {
+          "type": "element",
+          "name": "opcode",
+          "attributes": {
+            "name": "sample",
+            "value": "dummy.wav"
+          }
+        }
+      ]
+    }
+  ]
+}
