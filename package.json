@@ -10,7 +10,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "dev": "ts-node src/index.ts",
-    "dev:cli": "rm /usr/local/bin/sfz-tools && npm run build && npm link",
+    "dev:cli": "rm $(which sfz-tools) && npm run build && npm link",
     "format": "prettier --write \"src/**/*.{ts,tsx}\"",
     "lint": "tslint -p tsconfig.json",
     "test": "jest --config jestconfig.json"
@@ -29,7 +29,7 @@
   "author": "kmturley",
   "license": "CC0-1.0",
   "dependencies": {
-    "@sfz-tools/core": "^0.0.4",
+    "@sfz-tools/core": "^0.0.5",
     "cli-table3": "^0.6.0",
     "commander": "^7.2.0"
   },
