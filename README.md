@@ -35,6 +35,14 @@ Convert a remote sfz file to json/xml using:
     sfz-tools convert https://raw.githubusercontent.com/sfzinstruments/jlearman.jRhodes3c/master/jRhodes3c-looped-flac-sfz/_jRhodes-stereo-looped.sfz --json
     sfz-tools convert https://raw.githubusercontent.com/sfzinstruments/jlearman.jRhodes3c/master/jRhodes3c-looped-flac-sfz/_jRhodes-stereo-looped.sfz --xml
 
+Write the converted result to disk:
+
+    sfz-tools convert ./test/syntax/basic.sfz --json --write
+
+Enable logging:
+
+    sfz-tools convert ./test/syntax/basic.sfz --json --log
+
 
 ## Updating CLI code
 
