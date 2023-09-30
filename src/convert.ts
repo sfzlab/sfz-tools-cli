@@ -15,12 +15,25 @@ import {
   logEnable,
   pathGetDirectory,
   pathGetExt,
+  pathGetFilename,
 } from '@sfz-tools/core';
 import { ParseDefinition } from '@sfz-tools/core/dist/types/parse';
 
 function outputFile(fileData: string, filePath: string, write?: boolean) {
   console.log(fileData);
-  if (write) fileCreate(filePath, fileData);
+  if (write) {
+    if (filePath.startsWith('http')) {
+      const filename: string = pathGetFilename(filePath);
+      const ext: string = pathGetExt(filePath);
+      fileCreate(`${filename}.${ext}`, fileData);
+    } else {
+      fileCreate(filePath, fileData);
+    }
+  }
+}
+
+function replaceExt(filePath: string, fileExt: string, newExt: string) {
+  return filePath.replace(`.${fileExt}`, `.${newExt}`);
 }
 
 const convert = new Command('convert')
@@ -49,24 +62,28 @@ const convert = new Command('convert')
         const fileExt: string = pathGetExt(file);
         if (fileExt === 'json') {
           const sfzJs: ParseDefinition = file.startsWith('http') ? await apiJson(file) : fileReadJson(file);
-          if (options.sfz) outputFile(convertJsToSfz(sfzJs), file.replace(fileExt, 'sfz'), options.write);
-          if (options.xml) outputFile(convertJsToXml(sfzJs), file.replace(fileExt, 'xml'), options.write);
+          if (options.sfz) outputFile(convertJsToSfz(sfzJs), replaceExt(file, fileExt, 'sfz'), options.write);
+          if (options.xml) outputFile(convertJsToXml(sfzJs), replaceExt(file, fileExt, 'xml'), options.write);
         } else if (fileExt === 'sfz') {
           const sfzDir: string = pathGetDirectory(file);
           const sfzText: string = file.startsWith('http') ? await apiText(file) : fileReadString(file);
           if (options.json)
             outputFile(
               JSON.stringify(await convertSfzToJs(sfzText, sfzDir), null, 2),
-              file.replace(fileExt, 'json'),
+              replaceExt(file, fileExt, 'json'),
               options.write
             );
           if (options.xml)
-            outputFile(await convertSfzToXml(sfzText, sfzDir), file.replace(fileExt, 'xml'), options.write);
+            outputFile(await convertSfzToXml(sfzText, sfzDir), replaceExt(file, fileExt, 'xml'), options.write);
         } else if (fileExt === 'xml') {
           const sfzXml: string = file.startsWith('http') ? await apiText(file) : fileReadString(file);
           if (options.json)
-            outputFile(JSON.stringify(convertXmlToJs(sfzXml), null, 2), file.replace(fileExt, 'json'), options.write);
-          if (options.sfz) outputFile(convertXmlToSfz(sfzXml), file.replace(fileExt, 'sfz'), options.write);
+            outputFile(
+              JSON.stringify(convertXmlToJs(sfzXml), null, 2),
+              replaceExt(file, fileExt, 'json'),
+              options.write
+            );
+          if (options.sfz) outputFile(convertXmlToSfz(sfzXml), replaceExt(file, fileExt, 'sfz'), options.write);
         } else {
           console.log(`Unsupported file extension ${fileExt}`);
         }
