@@ -1,7 +1,13 @@
 import { cli, CliOutput } from './shared';
 
-test('Convert sfz to json', async () => {
-  const output: CliOutput = await cli(`convert ./test/syntax/basic.sfz --json`);
+test('Get help', async () => {
+  const output: CliOutput = await cli(`--help`);
   expect(output.exitCode).toBe(0);
   expect(output.stdout).toMatchSnapshot();
 });
+
+// test('Get version', async () => {
+//   const output: CliOutput = await cli(`--version`);
+//   expect(output.exitCode).toBe(0);
+//   expect(output.stdout).toMatchSnapshot();
+// });

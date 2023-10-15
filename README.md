@@ -1,5 +1,5 @@
 # sfz-tools-cli
-![Test](https://github.com/kmturley/sfz-tools-cli/workflows/Test/badge.svg)
+![Test](https://github.com/kmturley/sfz-tools-cli/actions/workflows/test.yml/badge.svg)
 
 Command line tool for handling SFZ and audio files using:
 
