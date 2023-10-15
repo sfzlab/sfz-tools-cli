@@ -18,6 +18,7 @@ import {
   pathGetFilename,
 } from '@sfz-tools/core';
 import { ParseDefinition } from '@sfz-tools/core/dist/types/parse';
+import path from 'path';
 
 function outputFile(fileData: string, filePath: string, write?: boolean) {
   console.log(fileData);
@@ -65,7 +66,7 @@ const convert = new Command('convert')
           if (options.sfz) outputFile(convertJsToSfz(sfzJs), replaceExt(file, fileExt, 'sfz'), options.write);
           if (options.xml) outputFile(convertJsToXml(sfzJs), replaceExt(file, fileExt, 'xml'), options.write);
         } else if (fileExt === 'sfz') {
-          const sfzDir: string = pathGetDirectory(file);
+          const sfzDir: string = pathGetDirectory(file, path.sep);
           const sfzText: string = file.startsWith('http') ? await apiText(file) : fileReadString(file);
           if (options.json)
             outputFile(
