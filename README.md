@@ -18,7 +18,7 @@ Verify the tool has been installed by running:
     sfz-tools --version
 
 
-## Usage
+## Converting sfz formats
 
 Convert a local sfz file to json/xml using:
 
@@ -42,6 +42,13 @@ Write the converted result to disk:
 Enable logging:
 
     sfz-tools convert ./test/syntax/basic.sfz --json --log
+
+
+## Encoding audio files
+
+    sfz-tools encode ./test/**/*.wav --flac
+    sfz-tools encode ./test/audio/scale.wav --ogg
+    sfz-tools encode https://github.com/studiorack/basic-harmonica/raw/main/samples/harmonica_1.flac --wav
 
 
 ## Updating CLI code
