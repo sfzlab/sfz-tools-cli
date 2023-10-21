@@ -47,7 +47,7 @@ const analyze = new Command('analyze')
         duration: analyzeDuration(vector),
         energy: analyzeEnergy(vector),
         key: analyzeKey(vector),
-        analyzeLoudness: analyzeLoudness(vector),
+        loudness: analyzeLoudness(vector),
         notes: analyzeNotes(vector),
         scale: analyzeScale(vector),
         speed: analyzeSpeed(vector),
