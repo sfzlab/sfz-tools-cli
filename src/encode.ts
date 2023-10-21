@@ -7,6 +7,7 @@ import {
   encodeOggToFlac,
   encodeOggToWav,
   encodeWavToFlac,
+  encodeWavToOgg,
   fileCreate,
   log,
   logEnable,
@@ -46,7 +47,7 @@ const encode = new Command('encode')
         if (options.wav) encodeOggToWav(file);
       } else if (fileExt === 'wav') {
         if (options.flac) encodeWavToFlac(file);
-        if (options.ogg) encodeWavToFlac(file);
+        if (options.ogg) encodeWavToOgg(file);
       } else {
         console.log(`Unsupported file extension ${fileExt}`);
       }
