@@ -8,7 +8,9 @@ Options:
   -h, --help                    display help for command
 
 Commands:
+  analyze [options] <filepath>  Analyze audio features
   convert [options] <filepath>  Convert sfz files to other formats
+  encode [options] <filepath>   Encode audio files into other formats
   help [command]                display help for command
 "
 `;
