@@ -8,6 +8,7 @@ import {
   encodeOggToWav,
   encodeWavToFlac,
   fileCreate,
+  log,
   logEnable,
   pathGetExt,
   pathGetFilename,
@@ -33,6 +34,7 @@ const encode = new Command('encode')
     } else {
       files = dirRead(filepath);
     }
+    log('files', files);
     // loop through remote/local files
     for (const file of files) {
       const fileExt: string = pathGetExt(file);
