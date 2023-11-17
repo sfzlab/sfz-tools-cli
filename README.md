@@ -54,6 +54,12 @@ Write the converted result to disk:
     sfz-tools encode https://github.com/studiorack/basic-harmonica/raw/main/samples/harmonica_1.flac --wav
 
 
+## Organize files using pattern
+
+    bash ./test/create.sh
+    sfz-tools organize "./test/files/**/*.wav" --rename '$other[0]_$other[1]_$note_rr$round' --log
+
+
 ## Updating CLI code
 
 Install plugin source code locally:
