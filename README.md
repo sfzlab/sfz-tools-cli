@@ -18,14 +18,14 @@ Verify the tool has been installed by running:
     sfz-tools --version
 
 
-## Analyze audio files
+## Analyze audio files to detect audio features
 
     sfz-tools analyze "./test/**/*.wav"
     sfz-tools analyze "./test/audio/scale.wav"
     sfz-tools analyze https://github.com/studiorack/basic-harmonica/raw/main/samples/harmonica_1.flac
 
 
-## Converting sfz formats
+## Convert sfz files to other formats
 
 Convert a local sfz file to json/xml using:
 
@@ -47,7 +47,7 @@ Write the converted result to disk:
     sfz-tools convert "./test/syntax/basic.sfz" --json --write
 
 
-## Encoding audio files
+## Encode audio files into other formats
 
     sfz-tools encode "./test/**/*.wav" --flac
     sfz-tools encode "./test/audio/scale.wav" --ogg

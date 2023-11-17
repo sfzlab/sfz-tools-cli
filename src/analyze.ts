@@ -22,7 +22,7 @@ import { AnalyzeVector } from '@sfz-tools/core/dist/types/analyze';
 const analyze = new Command('analyze')
   .arguments('<filepath>')
   .option('-l, --log', 'Enable logging')
-  .description('Analyze audio files to find features')
+  .description('Analyze audio files to detect audio features')
   .action(async (filepath: string, options: { log?: boolean }) => {
     if (options.log) logEnable();
     let files: string[] = [];
