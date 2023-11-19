@@ -56,8 +56,18 @@ Write the converted result to disk:
 
 ## Organize files using pattern
 
+Create example files and parse filenames for metadata:
+
     bash ./test/create.sh
+    sfz-tools organize "./test/files/**/*.wav" --log
+
+Rename example files using a pattern:
+
     sfz-tools organize "./test/files/**/*.wav" --rename '$other[0]_$other[1]_$note_rr$round' --log
+
+Rename example files and organize into folder using a pattern:
+
+    sfz-tools organize "./test/files/**/*.wav" --rename '$other[0]/$other[1]/$note_rr$round' --log
 
 
 ## Updating CLI code
