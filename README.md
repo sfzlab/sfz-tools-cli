@@ -20,9 +20,9 @@ Verify the tool has been installed by running:
 
 ## Analyze audio files to detect audio features
 
-    sfz-tools analyze "./test/**/*.wav"
-    sfz-tools analyze "./test/audio/scale.wav"
-    sfz-tools analyze https://github.com/studiorack/basic-harmonica/raw/main/samples/harmonica_1.flac
+    sfz-tools analyze "./test/audio/**/*.wav" --duration --key --loudness
+    sfz-tools analyze "./test/audio/scale.wav" --duration --key --loudness
+    sfz-tools analyze https://github.com/kmturley/sfz-tools-core/raw/main/test/audio/scale-piano.wav --duration --key --loudness
 
 
 ## Convert sfz files to other formats
@@ -34,8 +34,8 @@ Convert a local sfz file to json/xml using:
 
 Convert a local directory of file to json/xml using glob patterns:
 
-    sfz-tools convert "./test/**/*.sfz" --json
-    sfz-tools convert "./test/**/*.sfz" --xml
+    sfz-tools convert "./test/syntax/**/*.sfz" --json
+    sfz-tools convert "./test/syntax/**/*.sfz" --xml
 
 Convert a remote sfz file to json/xml using:
 
@@ -49,7 +49,7 @@ Write the converted result to disk:
 
 ## Encode audio files into other formats
 
-    sfz-tools encode "./test/**/*.wav" --flac
+    sfz-tools encode "./test/audio/**/*.wav" --flac
     sfz-tools encode "./test/audio/scale.wav" --ogg
     sfz-tools encode https://github.com/studiorack/basic-harmonica/raw/main/samples/harmonica_1.flac --wav
 

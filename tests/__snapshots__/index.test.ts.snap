@@ -4,13 +4,14 @@ exports[`Get help 1`] = `
 "Usage: index [options] [command]
 
 Options:
-  -V, --version                 output the version number
-  -h, --help                    display help for command
+  -V, --version                  output the version number
+  -h, --help                     display help for command
 
 Commands:
-  analyze [options] <filepath>  Analyze audio features
-  convert [options] <filepath>  Convert sfz files to other formats
-  encode [options] <filepath>   Encode audio files into other formats
-  help [command]                display help for command
+  analyze [options] <filepath>   Analyze audio files to detect audio features
+  convert [options] <filepath>   Convert sfz files to other formats
+  encode [options] <filepath>    Encode audio files into other formats
+  organize [options] <filepath>  Organize files using pattern
+  help [command]                 display help for command
 "
 `;
