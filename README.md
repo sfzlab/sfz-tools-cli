@@ -70,6 +70,21 @@ Rename example files and organize into folder using a pattern:
     sfz-tools organize "./test/files/**/*.wav" --rename '$other[0]/$other[1]/$note_rr$round' --log
 
 
+## Splice audio files
+
+Detect notes and output each as sequential files:
+
+    sfz-tools splice "./test/audio/scale.wav" --log
+
+Detect notes and output each using a custom pattern:
+
+    sfz-tools splice "./test/audio/scale.wav" --rename '_$octave$name' --log
+
+Detect notes and output each into folder using a pattern:
+
+    sfz-tools splice "./test/audio/scale.wav" --rename '/$octave$name' --log
+
+
 ## Updating CLI code
 
 Install plugin source code locally:
