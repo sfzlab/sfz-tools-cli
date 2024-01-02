@@ -12,6 +12,7 @@ Commands:
   convert [options] <filepath>   Convert sfz files to other formats
   encode [options] <filepath>    Encode audio files into other formats
   organize [options] <filepath>  Organize files using pattern
+  splice [options] <filepath>    Organize files using pattern
   help [command]                 display help for command
 "
 `;

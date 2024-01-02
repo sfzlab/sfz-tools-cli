@@ -70,7 +70,7 @@ Rename example files and organize into folder using a pattern:
     sfz-tools organize "./test/files/**/*.wav" --rename '$other[0]/$other[1]/$note_rr$round' --log
 
 
-## Splice audio files
+## Splice audio files into separate notes
 
 Detect notes and output each as sequential files:
 

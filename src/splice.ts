@@ -17,7 +17,7 @@ const splice = new Command('splice')
   .arguments('<filepath>')
   .option('-r, --rename <pattern>', 'Rename pattern')
   .option('-l, --log', 'Enable logging')
-  .description('Organize files using pattern')
+  .description('Splice audio files into separate notes')
   .action(async (filepath: string, options: { rename?: string; log?: boolean }) => {
     if (options.log) logEnable();
     let files: string[] = [];
