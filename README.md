@@ -63,11 +63,11 @@ Create example files and parse filenames for metadata:
 
 Rename example files using a pattern:
 
-    sfz-tools organize "./test/files/**/*.wav" --rename '$other[0]_$other[1]_$note_rr$round' --log
+    sfz-tools organize "./test/files/**/*.wav" --rename '$item[0]_$item[1]_$note_rr$round' --log
 
 Rename example files and organize into folder using a pattern:
 
-    sfz-tools organize "./test/files/**/*.wav" --rename '$other[0]/$other[1]/$note_rr$round' --log
+    sfz-tools organize "./test/files/**/*.wav" --rename '$item[0]/$item[1]/$note_rr$round' --log
 
 
 ## Splice audio files into separate notes

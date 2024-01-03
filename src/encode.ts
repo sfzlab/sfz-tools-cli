@@ -1,28 +1,19 @@
 import { Command } from 'commander';
-import {
-  apiBuffer,
-  dirRead,
-  encodeFlacToOgg,
-  encodeFlacToWav,
-  encodeOggToFlac,
-  encodeOggToWav,
-  encodeWavToFlac,
-  encodeWavToOgg,
-  fileCreate,
-  log,
-  logEnable,
-  pathGetExt,
-  pathGetFilename,
-} from '@sfz-tools/core';
+import { apiBuffer, dirRead, encode, fileCreate, log, logEnable, pathGetExt, pathGetFilename } from '@sfz-tools/core';
+import { EncodeOptions } from '@sfz-tools/core/dist/types/encode';
 
-const encode = new Command('encode')
+interface EncodeOptionsCli extends EncodeOptions {
+  log?: boolean;
+}
+
+const encodeCmd = new Command('encode')
   .arguments('<filepath>')
   .option('-f, --flac', 'Output as flac')
   .option('-o, --ogg', 'Output as ogg')
   .option('-w, --wav', 'Output as wav')
   .option('-l, --log', 'Enable logging')
   .description('Encode audio files into other formats')
-  .action(async (filepath: string, options: { flac?: boolean; ogg?: boolean; wav?: boolean; log?: boolean }) => {
+  .action(async (filepath: string, options: EncodeOptionsCli) => {
     if (options.log) logEnable();
     let files: string[] = [];
     // Load remote url or local file
@@ -37,21 +28,9 @@ const encode = new Command('encode')
     }
     log('files', files);
     // loop through remote/local files
-    for (const file of files) {
-      const fileExt: string = pathGetExt(file);
-      if (fileExt === 'flac') {
-        if (options.ogg) encodeFlacToOgg(file);
-        if (options.wav) encodeFlacToWav(file);
-      } else if (fileExt === 'ogg') {
-        if (options.flac) encodeOggToFlac(file);
-        if (options.wav) encodeOggToWav(file);
-      } else if (fileExt === 'wav') {
-        if (options.flac) encodeWavToFlac(file);
-        if (options.ogg) encodeWavToOgg(file);
-      } else {
-        console.log(`Unsupported file extension ${fileExt}`);
-      }
+    for (const fileitem of files) {
+      encode(fileitem, options);
     }
   });
 
-export { encode };
+export { encodeCmd };

@@ -10,10 +10,11 @@ import {
   pathGetDirectory,
   pathGetExt,
   pathGetFilename,
+  pathReplaceVariables,
 } from '@sfz-tools/core';
 import { AnalyzeFile, AnalyzeNote } from '@sfz-tools/core/dist/types/analyze';
 
-const splice = new Command('splice')
+const spliceCmd = new Command('splice')
   .arguments('<filepath>')
   .option('-r, --rename <pattern>', 'Rename pattern')
   .option('-l, --log', 'Enable logging')
@@ -28,29 +29,21 @@ const splice = new Command('splice')
       files = dirRead(filepath);
     }
     // loop through remote/local files
-    for (const filePath of files) {
-      const fileDir: string = pathGetDirectory(filePath);
-      const fileExt: string = pathGetExt(filePath);
-      const fileName: string = pathGetFilename(filePath);
-      const file: AnalyzeFile = analyzeLoad(filePath);
+    for (const fileitem of files) {
+      const fileDir: string = pathGetDirectory(fileitem);
+      const fileExt: string = pathGetExt(fileitem);
+      const fileName: string = pathGetFilename(fileitem);
+      const file: AnalyzeFile = analyzeLoad(fileitem);
       const notes: AnalyzeNote[] = analyzeNotes(file, true);
       log(notes);
       notes.forEach((note: AnalyzeNote, noteIndex: number) => {
         log(note);
         let fileRenamed: string = `${fileName}_${noteIndex}`;
-        if (options.rename) {
-          fileRenamed = `${fileName}${options.rename}`;
-          if (note.start) fileRenamed = fileRenamed.replace('$start', note.start as any);
-          if (note.duration) fileRenamed = fileRenamed.replace('$duration', note.duration as any);
-          if (note.loudness) fileRenamed = fileRenamed.replace('$loudness', note.loudness as any);
-          if (note.midi) fileRenamed = fileRenamed.replace('$midi', note.midi as any);
-          if (note.octave) fileRenamed = fileRenamed.replace('$octave', note.octave as any);
-          if (note.name) fileRenamed = fileRenamed.replace('$name', note.name as any);
-        }
+        if (options.rename) fileRenamed = pathReplaceVariables(`${fileName}${options.rename}`, note);
         const fileBuffer: Buffer = wav.encode(note.channelData as any, { sampleRate: note.sampleRate });
         fileCreate(`${fileDir}/${fileRenamed}.${fileExt}`, fileBuffer);
       });
     }
   });
 
-export { splice };
+export { spliceCmd };

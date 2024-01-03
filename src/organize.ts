@@ -8,9 +8,10 @@ import {
   pathGetDirectory,
   pathGetExt,
   pathGetFilename,
+  pathReplaceVariables,
 } from '@sfz-tools/core';
 
-const organize = new Command('organize')
+const organizeCmd = new Command('organize')
   .arguments('<filepath>')
   .option('-r, --rename <pattern>', 'Rename pattern')
   .option('-l, --log', 'Enable logging')
@@ -25,27 +26,19 @@ const organize = new Command('organize')
       files = dirRead(filepath);
     }
     // loop through remote/local files
-    for (const filePath of files) {
-      const fileDir: string = pathGetDirectory(filePath);
-      const fileExt: string = pathGetExt(filePath);
-      const fileName: string = pathGetFilename(filePath);
+    for (const fileitem of files) {
+      const fileDir: string = pathGetDirectory(fileitem);
+      const fileExt: string = pathGetExt(fileitem);
+      const fileName: string = pathGetFilename(fileitem);
       const fileParsed: any = filenameParse(fileName);
       if (!fileParsed.round) fileParsed.round = 1;
-      log(fileParsed);
+      log(fileitem, fileParsed);
       if (options.rename) {
-        let fileRenamed: string = options.rename;
-        if (fileParsed.dynamics) fileRenamed = fileRenamed.replace('$dynamics', fileParsed.dynamics);
-        if (fileParsed.note) fileRenamed = fileRenamed.replace('$note', fileParsed.note);
-        if (fileParsed.round) fileRenamed = fileRenamed.replace('$round', fileParsed.round);
-        if (fileParsed.velocity) fileRenamed = fileRenamed.replace('$velocity', fileParsed.velocity);
-        if (fileParsed.other) {
-          fileParsed.other.forEach((otherItem: string, otherIndex: number) => {
-            fileRenamed = fileRenamed.replace(`$other[${otherIndex}]`, otherItem);
-          });
-        }
-        fileMove(filePath, `${fileDir}/${fileRenamed}.${fileExt}`);
+        let fileRenamed: string = pathReplaceVariables(options.rename, fileParsed);
+        if (fileParsed.other) fileRenamed = pathReplaceVariables(fileRenamed, fileParsed.other);
+        fileMove(fileitem, `${fileDir}/${fileRenamed}.${fileExt}`);
       }
     }
   });
 
-export { organize };
+export { organizeCmd };

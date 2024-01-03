@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 
 import { Command } from 'commander';
-import { analyze } from './analyze';
-import { convert } from './convert';
-import { encode } from './encode';
-import { organize } from './organize';
-import { splice } from './splice';
+import { analyzeCmd } from './analyze';
+import { convertCmd } from './convert';
+import { encodeCmd } from './encode';
+import { organizeCmd } from './organize';
+import { spliceCmd } from './splice';
 
 const pkg = require('../package.json');
 const program = new Command();
-program.addCommand(analyze);
-program.addCommand(convert);
-program.addCommand(encode);
-program.addCommand(organize);
-program.addCommand(splice);
+program.addCommand(analyzeCmd);
+program.addCommand(convertCmd);
+program.addCommand(encodeCmd);
+program.addCommand(organizeCmd);
+program.addCommand(spliceCmd);
 
 program.version(pkg.version).parse(process.argv);
