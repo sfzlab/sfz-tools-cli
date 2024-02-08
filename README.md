@@ -29,22 +29,22 @@ Verify the tool has been installed by running:
 
 Convert a local sfz file to json/xml using:
 
-    sfz-tools convert "./test/syntax/basic.sfz" --json
+    sfz-tools convert "./test/syntax/basic.sfz" --js
     sfz-tools convert "./test/syntax/basic.sfz" --xml
 
 Convert a local directory of file to json/xml using glob patterns:
 
-    sfz-tools convert "./test/syntax/**/*.sfz" --json
+    sfz-tools convert "./test/syntax/**/*.sfz" --js
     sfz-tools convert "./test/syntax/**/*.sfz" --xml
 
 Convert a remote sfz file to json/xml using:
 
-    sfz-tools convert https://raw.githubusercontent.com/sfzinstruments/jlearman.jRhodes3c/master/jRhodes3c-looped-flac-sfz/_jRhodes-stereo-looped.sfz --json
+    sfz-tools convert https://raw.githubusercontent.com/sfzinstruments/jlearman.jRhodes3c/master/jRhodes3c-looped-flac-sfz/_jRhodes-stereo-looped.sfz --js
     sfz-tools convert https://raw.githubusercontent.com/sfzinstruments/jlearman.jRhodes3c/master/jRhodes3c-looped-flac-sfz/_jRhodes-stereo-looped.sfz --xml
 
 Write the converted result to disk:
 
-    sfz-tools convert "./test/syntax/basic.sfz" --json --write
+    sfz-tools convert "./test/syntax/basic.sfz" --js --write
 
 
 ## Encode audio files into other formats

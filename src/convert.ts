@@ -39,9 +39,10 @@ function replaceExt(filePath: string, fileExt: string, newExt: string) {
 
 const convertCmd = new Command('convert')
   .arguments('<filepath>')
-  .option('-j, --json', 'Output as json')
+  .option('-j, --js', 'Output as json')
   .option('-s, --sfz', 'Output as sfz')
   .option('-x, --xml', 'Output as xml')
+  .option('-y, --yaml', 'Output as xml')
   .option('-l, --log', 'Enable logging')
   .option('-w, --write', 'Write converted files')
   .description('Convert sfz files to other formats')
@@ -65,10 +66,11 @@ const convertCmd = new Command('convert')
         file = filepath.startsWith('http') ? await apiText(fileitem) : fileReadString(fileitem);
       }
       const fileConverted: any = await convert(fileitem, file, options, path.sep);
-      if (options.json)
+      if (options.js)
         outputFile(JSON.stringify(fileConverted, null, 2), replaceExt(fileitem, fileExt, 'json'), options.write);
       if (options.sfz) outputFile(fileConverted, replaceExt(fileitem, fileExt, 'sfz'), options.write);
       if (options.xml) outputFile(fileConverted, replaceExt(fileitem, fileExt, 'xml'), options.write);
+      if (options.yaml) outputFile(fileConverted, replaceExt(fileitem, fileExt, 'yaml'), options.write);
     }
   });
 

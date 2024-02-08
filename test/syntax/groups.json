@@ -1,9 +1,4 @@
 {
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",

@@ -2,11 +2,6 @@
 
 exports[`Convert basic.sfz to json 1`] = `
 "{
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",
@@ -101,11 +96,6 @@ exports[`Convert basic.sfz to xml 1`] = `
 
 exports[`Convert remote jRhodes to json 1`] = `
 "{
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",
@@ -7145,11 +7135,6 @@ exports[`Convert remote jRhodes to xml 1`] = `
 
 exports[`Convert test directory to json 1`] = `
 "{
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",
@@ -7270,11 +7255,6 @@ exports[`Convert test directory to json 1`] = `
   ]
 }
 {
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",
@@ -7293,11 +7273,6 @@ exports[`Convert test directory to json 1`] = `
   ]
 }
 {
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",
@@ -7474,11 +7449,6 @@ exports[`Convert test directory to json 1`] = `
   ]
 }
 {
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",
@@ -7576,11 +7546,6 @@ exports[`Convert test directory to json 1`] = `
   ]
 }
 {
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",
@@ -7655,11 +7620,6 @@ exports[`Convert test directory to json 1`] = `
   ]
 }
 {
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": [
     {
       "type": "element",
@@ -7678,11 +7638,6 @@ exports[`Convert test directory to json 1`] = `
   ]
 }
 {
-  "declaration": {
-    "attributes": {
-      "version": "1.0"
-    }
-  },
   "elements": {
     "elements": [
       {
