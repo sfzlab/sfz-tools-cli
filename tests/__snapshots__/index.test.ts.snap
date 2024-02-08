@@ -9,6 +9,7 @@ Options:
 
 Commands:
   analyze [options] <filepath>   Analyze audio files to detect audio features
+  compact [options] <directory>  Create compact version of an sfz instrument
   convert [options] <filepath>   Convert sfz files to other formats
   encode [options] <filepath>    Encode audio files into other formats
   organize [options] <filepath>  Organize files using pattern
