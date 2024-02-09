@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import {
   convertJsToXml,
   convertJsToYaml,
+  convertSetLoader,
   convertSfzToJs,
   dirRead,
   encode,
@@ -15,7 +16,7 @@ import path from 'path';
 import { ParseDefinition } from '@sfz-tools/core/dist/types/parse';
 
 function replaceAudioExt(filePath: string) {
-  return filePath.replace(/.(flac|wav)/g, '.ogg');
+  return filePath.replace(/\.(flac|wav)/g, '.ogg');
 }
 
 const compactCmd = new Command('compact')
@@ -31,6 +32,7 @@ const compactCmd = new Command('compact')
     for (const pathSfz of pathsSfz) {
       const file: string = fileReadString(pathSfz);
       const fileDir: string = pathGetDirectory(pathSfz, path.sep);
+      convertSetLoader(fileReadString);
       const fileJs: ParseDefinition = await convertSfzToJs(file, fileDir);
       fileCreate(pathSfz + '.json', replaceAudioExt(JSON.stringify(fileJs, null, 2)));
       fileCreate(pathSfz + '.xml', replaceAudioExt(convertJsToXml(fileJs)));

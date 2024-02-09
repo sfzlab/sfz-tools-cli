@@ -3,6 +3,7 @@ import {
   apiJson,
   apiText,
   convert,
+  convertSetLoader,
   dirRead,
   fileCreate,
   fileReadJson,
@@ -65,6 +66,7 @@ const convertCmd = new Command('convert')
       } else {
         file = filepath.startsWith('http') ? await apiText(fileitem) : fileReadString(fileitem);
       }
+      convertSetLoader(fileReadString);
       const fileConverted: any = await convert(fileitem, file, options, path.sep);
       if (options.js)
         outputFile(JSON.stringify(fileConverted, null, 2), replaceExt(fileitem, fileExt, 'json'), options.write);
