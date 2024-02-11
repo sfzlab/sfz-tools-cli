@@ -28,10 +28,11 @@ const compactCmd = new Command('compact')
 
     // Compact sfz files
     const pathsSfz: string[] = dirRead(`${directory}**/*.sfz`);
-    log('pathsSfz', pathsSfz);
     for (const pathSfz of pathsSfz) {
       const file: string = fileReadString(pathSfz);
       const fileDir: string = pathGetDirectory(pathSfz, path.sep);
+      log('pathSfz', pathSfz);
+      log('fileDir', fileDir);
       convertSetLoader(fileReadString);
       const fileJs: ParseDefinition = await convertSfzToJs(file, fileDir);
       fileCreate(pathSfz + '.json', replaceAudioExt(JSON.stringify(fileJs, null, 2)));

@@ -29,7 +29,7 @@
   "author": "kmturley",
   "license": "CC0-1.0",
   "dependencies": {
-    "@sfz-tools/core": "^0.0.25",
+    "@sfz-tools/core": "^0.0.26",
     "@types/node-wav": "^0.0.3",
     "cli-table3": "^0.6.0",
     "commander": "^7.2.0",
